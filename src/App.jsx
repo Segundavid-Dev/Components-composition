@@ -57,10 +57,17 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
 
+  const query = `Batman`;
+
   useEffect(function () {
-    fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=Batman`)
-      .then((res) => res.json())
-      .then((data) => setMovies(data.Search));
+    async function fetchMovies() {
+      const response = await fetch(
+        `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+      );
+      const data = await response.json();
+      setMovies(data.Search);
+    }
+    fetchMovies();
   }, []);
   return (
     <>
