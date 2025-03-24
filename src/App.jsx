@@ -48,12 +48,19 @@ const tempWatchedData = [
   },
 ];
 
+const KEY = `2a038ed2`;
+
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+
+  fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=Batman`)
+    .then((res) => res.json())
+    .then((data) => console.log(data.Search));
+
   return (
     <>
       <NavBar>
