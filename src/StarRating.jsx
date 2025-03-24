@@ -9,7 +9,7 @@ function CustomButton({ label, onClick }) {
   );
 }
 
-function App() {
+function StarRating() {
   function sayHello() {
     console.log("Hello, user");
   }
@@ -30,4 +30,4 @@ CustomButton.propTypes = {
   label: PropTypes.string.isRequired,
 };
 
-export default App;
+export default StarRating;
